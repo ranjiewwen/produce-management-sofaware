@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="magnetic">
+      <UniqueIdentifier>{f376e572-1024-4dc4-b049-67540f1b7ee8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main_dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="about_dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="device_proxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp_socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="anchor_layout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="label.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="navigation_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_connect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_upgrade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="status_bar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="progress_bar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui_resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="login_dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thread_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="working_parameters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="working_parameters_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ftp_client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ftp_client_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="msxml_wrap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="progress_tracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="progress_tracker_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="task_list_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_channel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_channel_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="device_proxy_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="run_cash_monitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="run_cash_dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="run_cash_monitor_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cash_list_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="observer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="observer_inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ir_calibration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjustment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cis_calibrator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="image_view_dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_run_cash_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="check_point_list_box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="waveform_view_dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sensor_testing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_magnetic_detect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_cis_calibration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_ir_calibration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_finish.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="magnetic\BMFindStartEnd.h">
+      <Filter>magnetic</Filter>
+    </ClInclude>
+    <ClInclude Include="magnetic\BMHD_AmountMatrixParameter.h">
+      <Filter>magnetic</Filter>
+    </ClInclude>
+    <ClInclude Include="magnetic\BMHD_check.h">
+      <Filter>magnetic</Filter>
+    </ClInclude>
+    <ClInclude Include="magnetic\JW_type.h">
+      <Filter>magnetic</Filter>
+    </ClInclude>
+    <ClInclude Include="magnetic\LRSM_check.h">
+      <Filter>magnetic</Filter>
+    </ClInclude>
+    <ClInclude Include="magnetic\RMBresult_check.h">
+      <Filter>magnetic</Filter>
+    </ClInclude>
+    <ClInclude Include="magnetic\selfCheck.h">
+      <Filter>magnetic</Filter>
+    </ClInclude>
+    <ClInclude Include="debug_logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="splash_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input_sn_dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="local_file_saver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Computer_Information.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input_name_key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataRangeChoiceDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="about_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="device_proxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tcp_socket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="anchor_layout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="label.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="navigation_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_connect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_upgrade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="status_bar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="progress_bar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bitmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="login_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="working_parameters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ftp_client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="msxml_wrap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="progress_tracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="task_list_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data_channel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="run_cash_monitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="run_cash_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cash_list_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="observer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ir_calibration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjustment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cis_calibrator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="image_view_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_run_cash_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="check_point_list_box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="waveform_view_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sensor_testing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_magnetic_detect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_cis_calibration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_ir_calibration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_finish.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="magnetic\BMFindStartEnd.cpp">
+      <Filter>magnetic</Filter>
+    </ClCompile>
+    <ClCompile Include="magnetic\BMHD_AmountMatrixParameter.cpp">
+      <Filter>magnetic</Filter>
+    </ClCompile>
+    <ClCompile Include="magnetic\BMHD_check.cpp">
+      <Filter>magnetic</Filter>
+    </ClCompile>
+    <ClCompile Include="magnetic\LRSM_check.cpp">
+      <Filter>magnetic</Filter>
+    </ClCompile>
+    <ClCompile Include="magnetic\RMBresult_check.cpp">
+      <Filter>magnetic</Filter>
+    </ClCompile>
+    <ClCompile Include="magnetic\selfCheck.cpp">
+      <Filter>magnetic</Filter>
+    </ClCompile>
+    <ClCompile Include="debug_logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="splash_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="input_sn_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="local_file_saver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Computer_Information.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="input_name_key.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataRangeChoiceDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ccmdbg.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\ccmdbg.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Debug\app_update.exe" />
+    <None Include="..\..\check_service\Debug\check_service.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\ccmdbg.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\not_connect.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\navigation_number.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\menu.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\minimize.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\run_cash.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\sketch_map.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\check_point_states.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\error.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ok.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\result_status.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\login_header.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\off.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\on.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\debug_finish.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\status.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\green_circle.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\green_rect.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\red_circle.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\red_rect.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\splash_screen.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\marquee.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\alert.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

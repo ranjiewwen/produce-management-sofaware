@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{68F9DFB1-95EF-423D-BB36-E72A88559B28}</ProjectGuid>
+    <RootNamespace>ccmdbg</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>E:\工作\AK47软件\SVN\ccmdbg\third_party\lpng1619;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;CURL_STATICLIB;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\third_party\lpng1619</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>wldap32.lib;Wininet.lib;msxml2.lib;zlib.lib;libpng16.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\third_party\lpng1619\projects\vstudio\Debug Library</AdditionalLibraryDirectories>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>wldap32.lib;Wininet.lib;msxml2.lib;zlib.lib;libpng16.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="about_dialog.h" />
+    <ClInclude Include="adjustment.h" />
+    <ClInclude Include="anchor_layout.h" />
+    <ClInclude Include="application.h" />
+    <ClInclude Include="bitmap.h" />
+    <ClInclude Include="button.h" />
+    <ClInclude Include="check_point_list_box.h" />
+    <ClInclude Include="cis_calibrator.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="Computer_Information.h" />
+    <ClInclude Include="DataRangeChoiceDlg.h" />
+    <ClInclude Include="data_channel.h" />
+    <ClInclude Include="data_channel_inl.h" />
+    <ClInclude Include="device_proxy.h" />
+    <ClInclude Include="device_proxy_inl.h" />
+    <ClInclude Include="error.h" />
+    <ClInclude Include="ftp_client.h" />
+    <ClInclude Include="ftp_client_inl.h" />
+    <ClInclude Include="gui_resources.h" />
+    <ClInclude Include="image_view_dialog.h" />
+    <ClInclude Include="input_name_key.h" />
+    <ClInclude Include="input_sn_dialog.h" />
+    <ClInclude Include="ir_calibration.h" />
+    <ClInclude Include="label.h" />
+    <ClInclude Include="debug_logger.h" />
+    <ClInclude Include="local_file_saver.h" />
+    <ClInclude Include="login_dialog.h" />
+    <ClInclude Include="magnetic\BMFindStartEnd.h" />
+    <ClInclude Include="magnetic\BMHD_AmountMatrixParameter.h" />
+    <ClInclude Include="magnetic\BMHD_check.h" />
+    <ClInclude Include="magnetic\JW_type.h" />
+    <ClInclude Include="magnetic\LRSM_check.h" />
+    <ClInclude Include="magnetic\RMBresult_check.h" />
+    <ClInclude Include="magnetic\selfCheck.h" />
+    <ClInclude Include="main_dialog.h" />
+    <ClInclude Include="md5.h" />
+    <ClInclude Include="msxml_wrap.h" />
+    <ClInclude Include="navigation_view.h" />
+    <ClInclude Include="observer.h" />
+    <ClInclude Include="observer_inl.h" />
+    <ClInclude Include="page.h" />
+    <ClInclude Include="page_cis_calibration.h" />
+    <ClInclude Include="page_connect.h" />
+    <ClInclude Include="page_finish.h" />
+    <ClInclude Include="page_ir_calibration.h" />
+    <ClInclude Include="page_magnetic_detect.h" />
+    <ClInclude Include="page_run_cash_test.h" />
+    <ClInclude Include="page_upgrade.h" />
+    <ClInclude Include="progress_bar.h" />
+    <ClInclude Include="progress_tracker.h" />
+    <ClInclude Include="progress_tracker_inl.h" />
+    <ClInclude Include="cash_list_view.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="run_cash_dialog.h" />
+    <ClInclude Include="run_cash_monitor.h" />
+    <ClInclude Include="run_cash_monitor_inl.h" />
+    <ClInclude Include="sensor_testing.h" />
+    <ClInclude Include="singleton.h" />
+    <ClInclude Include="splash_screen.h" />
+    <ClInclude Include="status_bar.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="task_list_view.h" />
+    <ClInclude Include="tcp_socket.h" />
+    <ClInclude Include="thread.h" />
+    <ClInclude Include="thread_inl.h" />
+    <ClInclude Include="graphics.h" />
+    <ClInclude Include="waveform_view_dialog.h" />
+    <ClInclude Include="working_parameters.h" />
+    <ClInclude Include="working_parameters_inl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="about_dialog.cpp" />
+    <ClCompile Include="adjustment.cpp" />
+    <ClCompile Include="anchor_layout.cpp" />
+    <ClCompile Include="application.cpp" />
+    <ClCompile Include="bitmap.cpp" />
+    <ClCompile Include="button.cpp" />
+    <ClCompile Include="check_point_list_box.cpp" />
+    <ClCompile Include="cis_calibrator.cpp" />
+    <ClCompile Include="common.cpp" />
+    <ClCompile Include="Computer_Information.cpp" />
+    <ClCompile Include="DataRangeChoiceDlg.cpp" />
+    <ClCompile Include="data_channel.cpp" />
+    <ClCompile Include="device_proxy.cpp" />
+    <ClCompile Include="error.cpp" />
+    <ClCompile Include="ftp_client.cpp" />
+    <ClCompile Include="gui_resources.cpp" />
+    <ClCompile Include="image_view_dialog.cpp" />
+    <ClCompile Include="input_name_key.cpp" />
+    <ClCompile Include="input_sn_dialog.cpp" />
+    <ClCompile Include="ir_calibration.cpp" />
+    <ClCompile Include="label.cpp" />
+    <ClCompile Include="debug_logger.cpp" />
+    <ClCompile Include="local_file_saver.cpp" />
+    <ClCompile Include="login_dialog.cpp" />
+    <ClCompile Include="magnetic\BMFindStartEnd.cpp" />
+    <ClCompile Include="magnetic\BMHD_AmountMatrixParameter.cpp" />
+    <ClCompile Include="magnetic\BMHD_check.cpp" />
+    <ClCompile Include="magnetic\LRSM_check.cpp" />
+    <ClCompile Include="magnetic\RMBresult_check.cpp" />
+    <ClCompile Include="magnetic\selfCheck.cpp" />
+    <ClCompile Include="main_dialog.cpp" />
+    <ClCompile Include="md5.cpp" />
+    <ClCompile Include="msxml_wrap.cpp" />
+    <ClCompile Include="navigation_view.cpp" />
+    <ClCompile Include="observer.cpp" />
+    <ClCompile Include="page.cpp" />
+    <ClCompile Include="page_cis_calibration.cpp" />
+    <ClCompile Include="page_connect.cpp" />
+    <ClCompile Include="page_finish.cpp" />
+    <ClCompile Include="page_ir_calibration.cpp" />
+    <ClCompile Include="page_magnetic_detect.cpp" />
+    <ClCompile Include="page_run_cash_test.cpp" />
+    <ClCompile Include="page_upgrade.cpp" />
+    <ClCompile Include="progress_bar.cpp" />
+    <ClCompile Include="progress_tracker.cpp" />
+    <ClCompile Include="cash_list_view.cpp" />
+    <ClCompile Include="run_cash_dialog.cpp" />
+    <ClCompile Include="run_cash_monitor.cpp" />
+    <ClCompile Include="sensor_testing.cpp" />
+    <ClCompile Include="splash_screen.cpp" />
+    <ClCompile Include="status_bar.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="task_list_view.cpp" />
+    <ClCompile Include="tcp_socket.cpp" />
+    <ClCompile Include="thread.cpp" />
+    <ClCompile Include="graphics.cpp" />
+    <ClCompile Include="waveform_view_dialog.cpp" />
+    <ClCompile Include="working_parameters.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ccmdbg.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\check_service\Debug\check_service.exe" />
+    <None Include="Debug\app_update.exe" />
+    <None Include="res\ccmdbg.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\alert.bmp" />
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\ccmdbg.ico" />
+    <Image Include="res\check_point_states.bmp" />
+    <Image Include="res\close.bmp" />
+    <Image Include="res\debug_finish.bmp" />
+    <Image Include="res\error.bmp" />
+    <Image Include="res\green_circle.bmp" />
+    <Image Include="res\green_rect.bmp" />
+    <Image Include="res\login_header.bmp" />
+    <Image Include="res\marquee.bmp" />
+    <Image Include="res\menu.bmp" />
+    <Image Include="res\minimize.bmp" />
+    <Image Include="res\navigation_number.bmp" />
+    <Image Include="res\not_connect.bmp" />
+    <Image Include="res\off.bmp" />
+    <Image Include="res\ok.bmp" />
+    <Image Include="res\on.bmp" />
+    <Image Include="res\red_circle.bmp" />
+    <Image Include="res\red_rect.bmp" />
+    <Image Include="res\result_status.bmp" />
+    <Image Include="res\run_cash.bmp" />
+    <Image Include="res\sketch_map.bmp" />
+    <Image Include="res\splash_screen.bmp" />
+    <Image Include="res\status.bmp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="ccmdbg.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
