@@ -74,9 +74,7 @@ BEGIN_MESSAGE_MAP(MainDialog, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON_RUN_CASH, &MainDialog::OnBnClickedButtonRunCash)
 	ON_MESSAGE(WM_DEVICE_CONNECTED, &MainDialog::OnDeviceConnected)
 	ON_MESSAGE(WM_DEVICE_DISCONNECTED, &MainDialog::OnDeviceDisconnected)
-	//ON_MESSAGE(WM_GETMINMAXINFO, &MainDialog::OnGetMinMaxInfo)
-	ON_WM_NCLBUTTONDOWN()
-	ON_WM_GETMINMAXINFO()
+	ON_WM_GETMINMAXINFO()  //添加消息响应
   ON_LBN_SELCHANGE(IDC_LIST_STEP, &MainDialog::OnLbnSelchangeListStep)
   ON_WM_TIMER()
   ON_BN_CLICKED(IDC_BUTTON_CHOICE_MODEL, &MainDialog::OnBnClickedButtonChoiceModel)
@@ -187,7 +185,7 @@ BOOL MainDialog::OnInitDialog()
   layout_.AddAnchor(statusBar_.m_hWnd, AnchorLayout::BOTTOM_LEFT, AnchorLayout::BOTTOM_RIGHT);
 
   ShowWindow(SW_MAXIMIZE);
-	SendMessage(WM_NCLBUTTONDOWN, HTCAPTION, MAKELPARAM(10, 10));
+	//SendMessage(WM_NCLBUTTONDOWN, HTCAPTION, MAKELPARAM(10, 10));
 
   DeviceProxy::GetInstance()->AddObserver(_T("MainDialog::OnDeviceConnected"), m_hWnd, DeviceProxy::SUBJECT_CONNECTED, WM_DEVICE_CONNECTED);
   DeviceProxy::GetInstance()->AddObserver(_T("MainDialog::OnDeviceDisconnected"), m_hWnd, DeviceProxy::SUBJECT_DISCONNECTED, WM_DEVICE_DISCONNECTED);
@@ -327,7 +325,7 @@ void MainDialog::OnSysCommand(UINT nID, LPARAM lParam)
 
 void MainDialog::OnPaint()
 {
-	if (IsIconic())
+	if (IsIconic())  //该函数确定给定窗口是否是最小化（图标化）的窗口。 　
 	{
 		CPaintDC dc(this); // 用于绘制的设备上下文
 
@@ -406,7 +404,9 @@ void MainDialog::OnBnClickedButtonClose() {
 }
 
 void MainDialog::OnBnClickedButtonMin() {
+
   ShowWindow(SW_MINIMIZE);
+
 }
 
 void MainDialog::OnClose() {
