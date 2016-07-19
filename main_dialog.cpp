@@ -65,15 +65,18 @@ BEGIN_MESSAGE_MAP(MainDialog, CDialog)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-  ON_WM_SIZE()
-  ON_WM_ERASEBKGND()
-  ON_WM_DESTROY()
-  ON_BN_CLICKED(IDC_BUTTON_CLOSE, &MainDialog::OnBnClickedButtonClose)
-  ON_BN_CLICKED(IDC_BUTTON_MIN, &MainDialog::OnBnClickedButtonMin)
-  ON_WM_CLOSE()
-  ON_BN_CLICKED(IDC_BUTTON_RUN_CASH, &MainDialog::OnBnClickedButtonRunCash)
-  ON_MESSAGE(WM_DEVICE_CONNECTED, &MainDialog::OnDeviceConnected)
-  ON_MESSAGE(WM_DEVICE_DISCONNECTED, &MainDialog::OnDeviceDisconnected)
+	ON_WM_SIZE()
+	ON_WM_ERASEBKGND()
+	ON_WM_DESTROY()
+	ON_BN_CLICKED(IDC_BUTTON_CLOSE, &MainDialog::OnBnClickedButtonClose)
+	ON_BN_CLICKED(IDC_BUTTON_MIN, &MainDialog::OnBnClickedButtonMin)
+	ON_WM_CLOSE()
+	ON_BN_CLICKED(IDC_BUTTON_RUN_CASH, &MainDialog::OnBnClickedButtonRunCash)
+	ON_MESSAGE(WM_DEVICE_CONNECTED, &MainDialog::OnDeviceConnected)
+	ON_MESSAGE(WM_DEVICE_DISCONNECTED, &MainDialog::OnDeviceDisconnected)
+	//ON_MESSAGE(WM_GETMINMAXINFO, &MainDialog::OnGetMinMaxInfo)
+	ON_WM_NCLBUTTONDOWN()
+	ON_WM_GETMINMAXINFO()
   ON_LBN_SELCHANGE(IDC_LIST_STEP, &MainDialog::OnLbnSelchangeListStep)
   ON_WM_TIMER()
   ON_BN_CLICKED(IDC_BUTTON_CHOICE_MODEL, &MainDialog::OnBnClickedButtonChoiceModel)
@@ -183,7 +186,8 @@ BOOL MainDialog::OnInitDialog()
   layout_.AddDlgItem(IDC_PLACE_PAGE, AnchorLayout::TOP_LEFT, AnchorLayout::BOTTOM_RIGHT);
   layout_.AddAnchor(statusBar_.m_hWnd, AnchorLayout::BOTTOM_LEFT, AnchorLayout::BOTTOM_RIGHT);
 
-	ShowWindow(SW_MAXIMIZE);
+  ShowWindow(SW_MAXIMIZE);
+	SendMessage(WM_NCLBUTTONDOWN, HTCAPTION, MAKELPARAM(10, 10));
 
   DeviceProxy::GetInstance()->AddObserver(_T("MainDialog::OnDeviceConnected"), m_hWnd, DeviceProxy::SUBJECT_CONNECTED, WM_DEVICE_CONNECTED);
   DeviceProxy::GetInstance()->AddObserver(_T("MainDialog::OnDeviceDisconnected"), m_hWnd, DeviceProxy::SUBJECT_DISCONNECTED, WM_DEVICE_DISCONNECTED);
@@ -231,6 +235,13 @@ BOOL MainDialog::OnInitDialog()
   GetDlgItem(IDC_STATIC_TITLE)->SetWindowText(title);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
+}
+
+void MainDialog::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI) 
+{
+	// TODO: Add your message handler code here and/or call default  
+	lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYFULLSCREEN) + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYDLGFRAME);
+	CDialog::OnGetMinMaxInfo(lpMMI);
 }
 
 void MainDialog::InitNavigationView() {

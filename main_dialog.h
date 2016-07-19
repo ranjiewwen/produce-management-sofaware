@@ -39,7 +39,7 @@ public:
   bool ShowPage(UINT pageId);  
   bool GotoStep(int step);
   void EnableConnectionCheck(bool enabled);
-
+  
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV Ö§³Ö
 
@@ -90,4 +90,5 @@ protected:
   afx_msg void OnTimer(UINT_PTR nIDEvent);
 public:
   afx_msg void OnBnClickedButtonChoiceModel();
+  afx_msg  void OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI);
 };
