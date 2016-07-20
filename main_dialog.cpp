@@ -238,9 +238,26 @@ BOOL MainDialog::OnInitDialog()
 void MainDialog::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI) 
 {
 	// TODO: Add your message handler code here and/or call default  
+
 	lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYFULLSCREEN) + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYDLGFRAME);
+	//lpMMI->ptMaxSize.x = GetSystemMetrics(SM_CXFULLSCREEN +  /*GetSystemMetrics(SM_CYCAPTION) */+ GetSystemMetrics(SM_CXDLGFRAME));
+
 	CDialog::OnGetMinMaxInfo(lpMMI);
 }
+
+//void MainDialog::OnGetMinMaxInfo(MINMAXINFO* lpmmi)
+//{
+//
+//	CSize sz = CFullScreenHandler.GetMaxSize();
+//	lpmmi->ptMaxSize = CPoint(sz);
+//	lpmmi->ptMaxTrackSize = CPoint(sz);
+//}
+//CSize MainDialog::GetMaxSize()
+//{
+//	CRect rc(0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
+//	rc.InflateRect(10, 50);
+//	return rc.Size();
+//}
 
 void MainDialog::InitNavigationView() {
   navigationView_.AddItem(STEP_UPGRADE, IDS_UPGRADE, false);

@@ -16,10 +16,12 @@ public:
 	virtual ~LoginDialog();
 
   virtual BOOL OnInitDialog();
-
+  bool isRemPswd;
 protected:
   Button    loginButton_;
   Button    closeButton_;
+  CButton   pBtn;
+  CButton*  pButton;
   Label     userNameLabel_;
   Label     passwordLabel_;
   CString   userName_;
@@ -36,6 +38,9 @@ protected:
   afx_msg BOOL OnEraseBkgnd(CDC* pDC);
   
 	DECLARE_MESSAGE_MAP()
+public:
+	
+	afx_msg void OnBnClickedCheckRempswd();
 };
 
 

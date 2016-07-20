@@ -55,6 +55,16 @@ BOOL LoginDialog::OnInitDialog() {
   SetDlgItemText(IDC_EDIT_USER_NAME, 
       AfxGetApp()->GetProfileString(_T("Recently"), _T("User"), _T("")));
 
+  pButton = (CButton*)GetDlgItem(IDC_CHECK_REMPSWD);
+  //下一次登录的时候，检查注册表里的值，如果记录了用户名密码，说明当前处于记住密码的状态，那么就把注册表里记录的数据填在用户名密码里
+  CString temp=AfxGetApp()->GetProfileString(_T("Recently"), _T("PassWord"), _T(""));
+  //if (temp!=L"")
+  if (_tcscmp(temp, TEXT("")) != 0)  //比较相等返回0，然后就是大于小于0；
+  {	  
+	  pButton->SetCheck(1);
+	  SetDlgItemText(IDC_EDIT_PASSWORD,
+		  AfxGetApp()->GetProfileString(_T("Recently"), _T("PassWord"), _T("")));
+  }
   return TRUE;  // return TRUE unless you set the focus to a control
   // EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -64,13 +74,14 @@ void LoginDialog::DoDataExchange(CDataExchange* pDX) {
   DDX_Control(pDX, IDOK, loginButton_);
   DDX_Control(pDX, IDC_STATIC_USER_NAME, userNameLabel_);
   DDX_Control(pDX, IDC_STATIC_PASSWORD, passwordLabel_);
-
+  DDX_Control(pDX, IDC_CHECK_REMPSWD, pBtn);
   CDialog::DoDataExchange(pDX);
 }
 
 BEGIN_MESSAGE_MAP(LoginDialog, CDialog)
   ON_WM_PAINT()
   ON_WM_ERASEBKGND()
+  ON_BN_CLICKED(IDC_CHECK_REMPSWD, &LoginDialog::OnBnClickedCheckRempswd)
 END_MESSAGE_MAP()
 
 void LoginDialog::OnPaint() {
@@ -110,14 +121,39 @@ void LoginDialog::OnOK() {
   if ((permission != 3) && (permission != 2)) {
     AfxMessageBox(IDS_PROMPT_INVALID_USER_NAME_PASSWORD);
     return;
-  }
-  
+  } 
   AfxGetApp()->WriteProfileString(_T("Recently"), _T("User"), userName_);
 
-  CDialog::OnOK();
+  //勾选以后，如果登录成功，就把当前的用户名密码记录在注册表里
+  //如果没有勾选，登录成功，就把注册表里记录的数据清空
+ 
+  isRemPswd = pButton->GetCheck();
+  if (isRemPswd)
+  {
+	  AfxGetApp()->WriteProfileString(_T("Recently"), _T("PassWord"), password_);
+  }
+  if (!isRemPswd)
+  {
+	  //清注册表
+	  AfxGetApp()->WriteProfileString(_T("Recently"), _T("PassWord"), L"");
+  }
+   CDialog::OnOK();
 }
 
 
 void LoginDialog::OnCancel() {
   CDialog::OnCancel();
+}
+
+void LoginDialog::OnBnClickedCheckRempswd()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	//if (pButton->GetCheck())
+	//{
+	//	isRemPswd = true;
+	//}
+	//if (!pButton->GetCheck())
+	//{
+	//	isRemPswd = false;
+	//}
 }

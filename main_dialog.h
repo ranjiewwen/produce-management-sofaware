@@ -39,7 +39,7 @@ public:
 	bool ShowPage(UINT pageId);
 	bool GotoStep(int step);
 	void EnableConnectionCheck(bool enabled);
-
+	CSize GetMaxSize();
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV Ö§³Ö
 
