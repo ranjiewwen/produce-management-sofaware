@@ -1,5 +1,5 @@
 #pragma once
-
+#include <Windows.h>
 // CashListView
 class RunCashMonitor;
 
@@ -15,17 +15,16 @@ public:
   void Update();
   void SelectItem(int index);
   void EnsureItemVisiable(int index);
-  int GetSelected() const;
-  
+  int GetSelected() const;  
   virtual void PreSubclassWindow();
-
+  TCHAR   szPath[MAX_PATH];
 protected:
   RunCashMonitor    *monitor_;
   int               itemHeight_;
   int               selectedItem_;
   int               topItem_;
   int               itemCount_;
-
+  CString           filePath;
   void SelectItemAndNotify(int index);
   void DrawRow(CDC *dc, int y, int index, CString text[6], int width[6]);
   void SetTopItem(int index);
@@ -42,6 +41,12 @@ protected:
   afx_msg void OnSetFocus(CWnd* pOldWnd);
 public:
   afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+
+public:
+	static char *szdir;
+public:
+	static  int CALLBACK BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lParam, LPARAM pData);
 };
+
 
 

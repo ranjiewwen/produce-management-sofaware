@@ -36,7 +36,7 @@ public:
 	const static VariableConfigBlock Null;
 
 	VariableConfigBlock();
-	VariableConfigBlock(LPCTSTR path);
+	VariableConfigBlock(LPCTSTR path);  //³õÊ¼»¯Â·¾¶
 	VariableConfigBlock(const VariableConfigBlock &other);
 	virtual ~VariableConfigBlock();
 	VariableConfigBlock &operator=(const VariableConfigBlock &other);

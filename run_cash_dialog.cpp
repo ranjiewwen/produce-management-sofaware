@@ -50,7 +50,6 @@ BEGIN_MESSAGE_MAP(RunCashDialog, CDialog)
 	ON_LBN_SELCHANGE(IDC_CASH_LIST_VIEW, &RunCashDialog::OnLbnSelchangeListCash)
 	ON_WM_LBUTTONDBLCLK()
 	ON_WM_RBUTTONDOWN()
-	ON_WM_LBUTTONDOWN()
 	ON_WM_GETMINMAXINFO()  //添加消息响应
 	ON_COMMAND(ID_SHOWDLG, &RunCashDialog::OnShowdlg)
 	ON_COMMAND(ID_SHOWBOX, &RunCashDialog::OnShowbox)
@@ -110,19 +109,15 @@ BOOL RunCashDialog::OnInitDialog() {
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void RunCashDialog::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI)
+void RunCashDialog::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI)  //还是有点点bug，在此页面移动任务栏，然后回到主界面有bug
 {
 	// TODO: Add your message handler code here and/or call default  
-	lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYFULLSCREEN) + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYDLGFRAME);
+	//lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYFULLSCREEN) + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYDLGFRAME);
+	CRect rt;
+	SystemParametersInfo(SPI_GETWORKAREA, 0, &rt, 0);
+	lpMMI->ptMaxSize.x = rt.Width();
+	lpMMI->ptMaxSize.y = rt.Height();  
 	CDialog::OnGetMinMaxInfo(lpMMI);
-}
-void RunCashDialog::OnLButtonDown(UINT nFlags, CPoint point)
-{
-	//让窗口可以被拖动  
-//	SendMessage(WM_NCLBUTTONDOWN, HTCAPTION, MAKELPARAM(point.x, point.y));
-//	ShowWindow(SW_MAXIMIZE);
-	UpdateWindow();
-	CDialog::OnLButtonDown(nFlags, point);
 }
 
 void RunCashDialog::OnClose() {
