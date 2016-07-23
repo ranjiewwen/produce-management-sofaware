@@ -217,22 +217,6 @@ void CashListView::OnLButtonDown(UINT nFlags, CPoint point) {
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
-//int CALLBACK CashListView::BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lParam, LPARAM pData)
-//{
-//	TCHAR curr[MAX_PATH];
-//	switch (uMsg) {
-//	case BFFM_INITIALIZED: // WParam is TRUE since you are passing a path. // It would be FALSE if you were passing a pidl.
-//		::SendMessage(hwnd, BFFM_SETSELECTION, TRUE, (LPARAM)szdir);
-//		break;
-//	case BFFM_SELCHANGED: // Set the status window to the currently selected path. 
-//		if (SHGetPathFromIDList((LPITEMIDLIST)lParam, curr))
-//		{
-//			::SendMessage(hwnd, BFFM_SETSTATUSTEXT, 0, (LPARAM)curr);
-//		}
-//		break;
-//	} return 0;
-//}
-
 int CALLBACK CashListView::BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lParam, LPARAM lpData)
 {
 	switch (uMsg)

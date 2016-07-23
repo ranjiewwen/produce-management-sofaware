@@ -185,10 +185,9 @@ BOOL MainDialog::OnInitDialog()
   layout_.AddAnchor(statusBar_.m_hWnd, AnchorLayout::BOTTOM_LEFT, AnchorLayout::BOTTOM_RIGHT);
 
   ShowWindow(SW_MAXIMIZE);
-  //CRect rect;
-  //::GetWindowRect(::FindWindow(_T("Shell_TrayWNd"), NULL), &rect);
- 
-  //MoveWindow(0, 0, GetSystemMetrics(SM_CXFULLSCREEN), GetSystemMetrics(SM_CYFULLSCREEN));
+  CRect rt;
+  SystemParametersInfo(SPI_GETWORKAREA, 0, &rt, 0);
+  MoveWindow(rt);
 
   DeviceProxy::GetInstance()->AddObserver(_T("MainDialog::OnDeviceConnected"), m_hWnd, DeviceProxy::SUBJECT_CONNECTED, WM_DEVICE_CONNECTED);
   DeviceProxy::GetInstance()->AddObserver(_T("MainDialog::OnDeviceDisconnected"), m_hWnd, DeviceProxy::SUBJECT_DISCONNECTED, WM_DEVICE_DISCONNECTED);
@@ -236,17 +235,6 @@ BOOL MainDialog::OnInitDialog()
   GetDlgItem(IDC_STATIC_TITLE)->SetWindowText(title);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
-}
-
-void MainDialog::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI) 
-{
-	// TODO: Add your message handler code here and/or call default  
-	//lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYFULLSCREEN) + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYDLGFRAME);
-	CRect rt;
-	SystemParametersInfo(SPI_GETWORKAREA,0,&rt,0);
-	lpMMI->ptMaxSize.x = rt.Width();
-	lpMMI->ptMaxSize.y = rt.Height();
-	CDialog::OnGetMinMaxInfo(lpMMI);
 }
 
 void MainDialog::InitNavigationView() {

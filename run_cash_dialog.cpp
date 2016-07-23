@@ -94,6 +94,9 @@ BOOL RunCashDialog::OnInitDialog() {
 	layout_.AddDlgItem(IDC_SN_IMAGE, AnchorLayout::BOTTOM_RIGHT, AnchorLayout::BOTTOM_RIGHT);
 
 	ShowWindow(SW_MAXIMIZE);
+	CRect rt;
+	SystemParametersInfo(SPI_GETWORKAREA, 0, &rt, 0);
+	MoveWindow(rt);
 
 	monitor_ = RunCashMonitor::GetInstance();
 	monitor_->AddObserver(_T("RunCashDialog::OnUpdate"), m_hWnd, 0, WM_UPDATE, true);
@@ -105,17 +108,6 @@ BOOL RunCashDialog::OnInitDialog() {
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
-}
-
-void RunCashDialog::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI)  //还是有点点bug，在此页面移动任务栏，然后回到主界面有bug
-{
-	// TODO: Add your message handler code here and/or call default  
-	//lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYFULLSCREEN) + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYDLGFRAME);
-	CRect rt;
-	SystemParametersInfo(SPI_GETWORKAREA, 0, &rt, 0);
-	lpMMI->ptMaxSize.x = rt.Width();
-	lpMMI->ptMaxSize.y = rt.Height();  
-	CDialog::OnGetMinMaxInfo(lpMMI);
 }
 
 void RunCashDialog::OnClose() {
@@ -412,7 +404,7 @@ void RunCashDialog::OnRButtonDown(UINT nFlags, CPoint point)
 
 	if (choice == ID_DATA_RANGE)
 	{
-		DataRangeChoiceDlg dlg;
+		DataRangeChoiceDlg dlg;   //数据级别选择对话框
 		dlg.DoModal();
 	}
 

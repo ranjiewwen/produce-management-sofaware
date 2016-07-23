@@ -63,6 +63,7 @@ protected:
 	Button          runCashButton_;
 	Button          choiceModelButton_;
 	InputSNDialog   inputSNDialog_;
+	CRect           m_FullScreenRect;
 
 	void InitNavigationView();
 	void InitPages();
@@ -90,6 +91,6 @@ protected:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 public:
 	afx_msg void OnBnClickedButtonChoiceModel();
-	afx_msg  void OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI);
+//	afx_msg  void OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI);
 
 };
