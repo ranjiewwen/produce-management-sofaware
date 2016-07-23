@@ -20,7 +20,6 @@ public:
 protected:
 	Button    loginButton_;
 	Button    closeButton_;
-	CButton   pBtn;
 	CButton*  pButton;
 	Label     userNameLabel_;
 	Label     passwordLabel_;
@@ -40,7 +39,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 
-	afx_msg void OnBnClickedCheckRempswd();
 };
 
 

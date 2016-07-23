@@ -17,7 +17,6 @@ public:
   void EnsureItemVisiable(int index);
   int GetSelected() const;  
   virtual void PreSubclassWindow();
-  TCHAR   szPath[MAX_PATH];
 protected:
   RunCashMonitor    *monitor_;
   int               itemHeight_;
@@ -43,7 +42,9 @@ public:
   afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
 
 public:
-	static char *szdir;
+	static  char    *szdir;
+	static  TCHAR   szPath[MAX_PATH];
+
 public:
 	static  int CALLBACK BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lParam, LPARAM pData);
 };

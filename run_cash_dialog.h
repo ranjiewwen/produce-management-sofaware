@@ -46,8 +46,6 @@ public:
   afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
 public:
   afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
-  afx_msg void OnShowdlg();
-  afx_msg void OnShowbox();
   afx_msg  void OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI);
  
 };

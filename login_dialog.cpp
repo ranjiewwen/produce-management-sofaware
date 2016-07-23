@@ -74,14 +74,12 @@ void LoginDialog::DoDataExchange(CDataExchange* pDX) {
   DDX_Control(pDX, IDOK, loginButton_);
   DDX_Control(pDX, IDC_STATIC_USER_NAME, userNameLabel_);
   DDX_Control(pDX, IDC_STATIC_PASSWORD, passwordLabel_);
-  DDX_Control(pDX, IDC_CHECK_REMPSWD, pBtn);
   CDialog::DoDataExchange(pDX);
 }
 
 BEGIN_MESSAGE_MAP(LoginDialog, CDialog)
   ON_WM_PAINT()
   ON_WM_ERASEBKGND()
-  ON_BN_CLICKED(IDC_CHECK_REMPSWD, &LoginDialog::OnBnClickedCheckRempswd)
 END_MESSAGE_MAP()
 
 void LoginDialog::OnPaint() {
@@ -145,15 +143,4 @@ void LoginDialog::OnCancel() {
   CDialog::OnCancel();
 }
 
-void LoginDialog::OnBnClickedCheckRempswd()
-{
-	// TODO:  在此添加控件通知处理程序代码
-	//if (pButton->GetCheck())
-	//{
-	//	isRemPswd = true;
-	//}
-	//if (!pButton->GetCheck())
-	//{
-	//	isRemPswd = false;
-	//}
-}
+

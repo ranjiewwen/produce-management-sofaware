@@ -51,8 +51,6 @@ BEGIN_MESSAGE_MAP(RunCashDialog, CDialog)
 	ON_WM_LBUTTONDBLCLK()
 	ON_WM_RBUTTONDOWN()
 	ON_WM_GETMINMAXINFO()  //添加消息响应
-	ON_COMMAND(ID_SHOWDLG, &RunCashDialog::OnShowdlg)
-	ON_COMMAND(ID_SHOWBOX, &RunCashDialog::OnShowbox)
 END_MESSAGE_MAP()
 
 
@@ -411,17 +409,7 @@ void RunCashDialog::OnRButtonDown(UINT nFlags, CPoint point)
 	
 	CMenu   *pContextMenu = menu.GetSubMenu(0); //获取第一个弹出菜单，所以第一个菜单必须有子菜单 
 	int choice = pContextMenu->TrackPopupMenu(TPM_RETURNCMD, point.x, point.y, this);
-	if (choice == ID_SHOWBOX) {
-		CFileDialog dlg(FALSE);
-		if (dlg.DoModal() == IDOK) {
-			CString filePath = dlg.GetPathName();
-			//topImage_.SaveToFile(filePath + "_top.bmp");
-			//bottomImage_.SaveToFile(filePath + "_bottom.bmp");
-		}
-	}
-	if (choice == ID_SHOWDLG) {
-		MessageBox(L"hello world!", L"右键菜单", MB_ICONINFORMATION | MB_OK);
-	}
+
 	if (choice == ID_DATA_RANGE)
 	{
 		DataRangeChoiceDlg dlg;
@@ -431,15 +419,4 @@ void RunCashDialog::OnRButtonDown(UINT nFlags, CPoint point)
 	CDialog::OnRButtonDown(nFlags, point);
 }
 
-void RunCashDialog::OnShowdlg()
-{
-	// TODO:  在此添加命令处理程序代码
-	MessageBox(L"hello world!",L"右键菜单",MB_ICONINFORMATION|MB_OK);
-}
 
-
-void RunCashDialog::OnShowbox()
-{
-	// TODO:  在此添加命令处理程序代码
-
-}

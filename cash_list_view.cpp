@@ -23,7 +23,7 @@ CashListView::CashListView()
 }
 
 char* CashListView::szdir;
-
+TCHAR CashListView::szPath[];
 CashListView::~CashListView() {
 }
 
@@ -239,7 +239,7 @@ int CALLBACK CashListView::BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lPara
 	{
 	case BFFM_INITIALIZED:    //初始化消息
 		////设置默认路径为lpData如'D:\'
-		::SendMessage(hwnd, BFFM_SETSELECTION, TRUE, lpData);
+		::SendMessage(hwnd, BFFM_SETSELECTION, TRUE, (LPARAM)szPath/*lpData*/);
 		//设置选择文件夹对话框的标题  
 		::SetWindowText(hwnd, TEXT("请先设置个工作目录"));
 		break;
@@ -317,17 +317,6 @@ void CashListView::OnRButtonDown(UINT nFlags, CPoint point)
 
 			if (choice == ID_SAVE_WAVE)
 			{
-				/*		CFileDialog dlg(FALSE);  //会自动记录上一次的目录
-				if (dlg.DoModal() == IDOK) {
-				CString filePath = dlg.GetPathName();
-				}*/
-
-				TCHAR szDefaultDir[MAX_PATH];
-				CString strDef(_T("E:\\"));
-				memcpy(szDefaultDir, strDef.GetBuffer(strDef.GetLength() * 2), strDef.GetLength() * 2);
-				strDef.ReleaseBuffer();
-				szDefaultDir[strDef.GetLength()] = 0;
-
 				filePath=AfxGetApp()->GetProfileString(_T("Recently"), _T("lastPath"), _T(""));
 				_tcscpy(szPath, filePath);  //CString转为TCHAR数组
 			
@@ -341,20 +330,14 @@ void CashListView::OnRButtonDown(UINT nFlags, CPoint point)
 				bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_STATUSTEXT;;
 				bi.lpfn = BrowseCallbackProc;    //回调函数  
 				bi.iImage = 0;
-				bi.lParam = long(&szPath);  //设置默认路径，传给回掉函数的参数
+				bi.lParam =0 /*long(&szPath)*/;  //设置默认路径，传给回掉函数的参数
 
 				pidl = SHBrowseForFolder(&bi);
 				if (pidl)
 				{		
 					SHGetPathFromIDList(pidl, szPath);
-					filePath = szPath;  //先定义成数组名是常量，不可以修改
-
-					// 将路径保存在文件中  
-					/*CString pathSet;
-					pathSet = m_exePath + L"UnionPicSet.ini";  //路径不好获取
-					::WritePrivateProfileString(_T("Path"), _T("DirectoryPath"), filePath, pathSet);*/
-
-					AfxGetApp()->WriteProfileString(_T("Recently"), _T("lastPath"), filePath);
+					//filePath = szPath;  //先定义成数组名是常量，不可以修改
+					AfxGetApp()->WriteProfileString(_T("Recently"), _T("lastPath"), /*filePath*/szPath);
 
 					/*int count = monitor_->Freeze();
 					Cash *cash = monitor_->GetCash(index);
