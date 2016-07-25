@@ -152,6 +152,7 @@
     <ClInclude Include="page_magnetic_detect.h" />
     <ClInclude Include="page_run_cash_test.h" />
     <ClInclude Include="page_upgrade.h" />
+    <ClInclude Include="ping.h" />
     <ClInclude Include="progress_bar.h" />
     <ClInclude Include="progress_tracker.h" />
     <ClInclude Include="progress_tracker_inl.h" />
@@ -219,6 +220,9 @@
     <ClCompile Include="page_magnetic_detect.cpp" />
     <ClCompile Include="page_run_cash_test.cpp" />
     <ClCompile Include="page_upgrade.cpp" />
+    <ClCompile Include="ping.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="progress_bar.cpp" />
     <ClCompile Include="progress_tracker.cpp" />
     <ClCompile Include="cash_list_view.cpp" />

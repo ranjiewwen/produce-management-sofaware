@@ -9,6 +9,7 @@
 #include "working_parameters.h"
 #include "working_parameters_inl.h"
 #include "main_dialog.h"
+#include "ping.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -48,20 +49,30 @@ bool PageConnect::OnLeave(int enterPageId) {
   return true;
 }
 
+//函数主要用于在点钞机未连接的时候自动连接点钞机
 DWORD PageConnect::TryConnect() {
-  ParameterBlock *modelBlock = WorkingParameters::GetInstance()->GetCurrentModelParameters();
-  ASSERT(modelBlock != NULL && !modelBlock->IsNull());
-  ParameterBlock addressBlock = modelBlock->SelectBlock(_T("Config\\DeviceAddress"));
-  CString deviceIP = addressBlock.GetStringParameter(_T("ip"), _T("192.168.8.131"));
-  deviceIP = AfxGetApp()->GetProfileStringW(_T("Debug"), _T("Device IP"), deviceIP);
-  int devicePort = addressBlock.GetIntParameter(_T("port"), 1234);
-  while (!connectThread_.IsInterrupted()) {
-    if (DeviceProxy::GetInstance()->Connect(deviceIP, devicePort)) {
-      break;
-    }
-    Sleep(200);
-  }
-  return 0;
+	ParameterBlock *modelBlock = WorkingParameters::GetInstance()->GetCurrentModelParameters();
+	ASSERT(modelBlock != NULL && !modelBlock->IsNull());
+	ParameterBlock addressBlock = modelBlock->SelectBlock(_T("Config\\DeviceAddress"));
+	CString deviceIP = addressBlock.GetStringParameter(_T("ip"), _T("192.168.8.131"));
+	deviceIP = AfxGetApp()->GetProfileStringW(_T("Debug"), _T("Device IP"), deviceIP);
+	int devicePort = addressBlock.GetIntParameter(_T("port"), 1234);
+	int times = 0;
+	while (!connectThread_.IsInterrupted()) {
+		//点钞机在连接之前，每五秒ping一下功能	
+		if (times==25)
+		{
+			times = 0;
+			CPing pingObj;
+			pingObj.Ping((LPSTR)(LPCTSTR)deviceIP);  //可以用单例
+		}
+		times++;
+		if (DeviceProxy::GetInstance()->Connect(deviceIP, devicePort)) {
+			break;
+		}
+		Sleep(200);
+	}
+	return 0;
 }
 
 BEGIN_MESSAGE_MAP(PageConnect, Page)

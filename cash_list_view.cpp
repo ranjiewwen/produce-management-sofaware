@@ -301,6 +301,7 @@ void CashListView::OnRButtonDown(UINT nFlags, CPoint point)
 
 			if (choice == ID_SAVE_WAVE)
 			{
+				filePath = L"";  //默认路径
 				filePath=AfxGetApp()->GetProfileString(_T("Recently"), _T("lastPath"), _T(""));
 				_tcscpy(szPath, filePath);  //CString转为TCHAR数组
 			
