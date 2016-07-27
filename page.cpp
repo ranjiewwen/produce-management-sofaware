@@ -125,7 +125,7 @@ void Page::ShowHeader(bool visibility) {
 }
 
 bool Page::ShowPage(int pageId) {
-  MainDialog *mainDialog = (MainDialog *)GetParent();
+  MainDialog *mainDialog = (MainDialog *)GetParent();  //指定子窗口的父窗口句柄。
   ASSERT(mainDialog != NULL);
   return mainDialog->ShowPage(pageId);
 }

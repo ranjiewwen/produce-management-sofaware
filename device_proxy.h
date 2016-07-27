@@ -11,7 +11,7 @@
 
 #define SERIAL_NUMBER_LENGTH	  24
 #define MODEL_NAME_LENGTH		    24
-#define FIRMWARE_VERSION_LENGTH 12
+#define FIRMWARE_VERSION_LENGTH     12
 #define DISABLED_VALUE			    -1
 
 enum DebugState {
@@ -209,6 +209,7 @@ public:
   bool Echo();
 
   bool SetIRParameters(const int *resistances);
+  bool SetAgingTestTime(const int hourTime);   //设置老化测试时间（以小时为单位的整形数据）
   bool GetIRParameters(int *resistances);
   bool GetIRValues(int *values);
   bool GetIRValues(const int *resistances, int *values);

@@ -33,7 +33,7 @@
 #define COMMAND_UPDATE_CIS_CORRECTION_TABLE 0x000e
 #define COMMAND_GET_MAC						0x0011
 #define COMMAND_GET_STUDY_COMPLETED_STATE   0x0012
-#define COMMAND_START_OVI_STUDY             0x0013
+#define COMMAND_SET_AGING_TIME              0x0013
 #define COMMAND_START_TAPE_STUDY            0x0014
 #define COMMAND_START_MOTOR                 0x0015
 #define COMMAND_START_RUN_CASH_DETECT       0x8004
@@ -385,6 +385,22 @@ bool DeviceProxy::SetIRParameters(const int *resistances) {
   }
   
   return true;
+}
+
+bool DeviceProxy::SetAgingTestTime(const int _hourTime)
+{
+	CriticalSection::ScopedLocker locker(criSec_);
+	CommandResult result;
+	if (!SendCommand(COMMAND_SET_AGING_TIME,&_hourTime,4,&result))
+	{
+		return false;
+	}
+	if (!result.IsOk())
+	{
+		TRACE("SetAgingTestTime error!");
+		return false;
+	}
+	return true;
 }
 
 bool DeviceProxy::GetIRParameters(int *resistances) {

@@ -3,6 +3,8 @@
 #include "page.h"
 #include "resource.h"
 #include "bitmap.h"
+#include "afxwin.h"
+#include "label.h"
 
 // PageFinish dialog
 class PageFinish : public Page
@@ -28,4 +30,5 @@ public:
   virtual BOOL OnInitDialog();
   afx_msg void OnSize(UINT nType, int cx, int cy);
   afx_msg void OnBnClickedButtonOk();
+  Label agingTimeLabel;
 };

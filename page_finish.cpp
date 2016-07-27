@@ -26,6 +26,7 @@ PageFinish::~PageFinish() {
 
 void PageFinish::DoDataExchange(CDataExchange* pDX) {
 	Page::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_STATIC_AGDING_TIME, agingTimeLabel);
 }
 
 
@@ -47,6 +48,9 @@ BOOL PageFinish::OnInitDialog() {
   SetHeaderButtons(&buttons, 1);
   ShowHeader(true);
 
+  agingTimeLabel.SetBkColor(RGB(255, 255, 255));
+  SetDlgItemText(IDC_EDIT_AGDING_TIME,/*(LPCTSTR)1*/_T("1")); //默认值
+
   return TRUE;  // return TRUE unless you set the focus to a control
   // EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -58,8 +62,11 @@ void PageFinish::OnSize(UINT nType, int cx, int cy) {
 }
 
 void PageFinish::OnBnClickedButtonOk() {
-  DebugLogger::GetInstance()->EndDebug();
+  CString agingTime;
+  GetDlgItemText(IDC_EDIT_AGDING_TIME,agingTime);
+  DeviceProxy::GetInstance()->SetAgingTestTime(_ttoi(agingTime)); //向下取整
 
+  DebugLogger::GetInstance()->EndDebug();
   DeviceProxy::GetInstance()->DisableDebug();
 }
 

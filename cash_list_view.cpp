@@ -24,6 +24,7 @@ CashListView::CashListView()
 
 char* CashListView::szdir;
 TCHAR CashListView::szPath[];
+
 CashListView::~CashListView() {
 }
 
@@ -249,13 +250,13 @@ void CashListView::OnRButtonDown(UINT nFlags, CPoint point)
 	GetClientRect(&clientRect);
 	clientRect.top += itemHeight_;
 	int index = (point.y - clientRect.top) / itemHeight_ + topItem_;
-	//	if (index >= 0 && index < itemCount_) 
+	if (index >= 0 && index < itemCount_) 
 	{
 		EnsureItemVisiable(index);
 		SelectItemAndNotify(index);
 		UpdateWindow();
 
-		//	if (monitor_ != NULL)
+		if (monitor_ != NULL)
 		{
 			CMenu menu;
 			menu.LoadMenu(IDR_POPUP_SAVE_WAVE);
@@ -305,43 +306,41 @@ void CashListView::OnRButtonDown(UINT nFlags, CPoint point)
 				filePath=AfxGetApp()->GetProfileString(_T("Recently"), _T("lastPath"), _T(""));
 				_tcscpy(szPath, filePath);  //CString转为TCHAR数组
 			
-				TCHAR folderName[MAX_PATH];			
 				LPCITEMIDLIST pidl = NULL;
 				BROWSEINFO bi;
 				bi.hwndOwner = AfxGetMainWnd()->GetSafeHwnd();
 				bi.pidlRoot = NULL;
-				bi.pszDisplayName = folderName;
+				bi.pszDisplayName = NULL;
 				bi.lpszTitle = _T("请选择用于保存的文件夹");
-				bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_STATUSTEXT;;
+				bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_STATUSTEXT;
 				bi.lpfn = BrowseCallbackProc;    //回调函数  
 				bi.iImage = 0;
-				bi.lParam =0 /*long(&szPath)*/;  //设置默认路径，传给回掉函数的参数
-
+				bi.lParam =0 /*long(&szPath)*/;  //设置默认路径，传给回掉函数的参数。方法二每次取得路径来设置此参数。
 				pidl = SHBrowseForFolder(&bi);
 				if (pidl)
 				{		
+					//TCHAR folderName[MAX_PATH];
 					SHGetPathFromIDList(pidl, szPath);
-					//filePath = szPath;  //先定义成数组名是常量，不可以修改
-					AfxGetApp()->WriteProfileString(_T("Recently"), _T("lastPath"), /*filePath*/szPath);
+					AfxGetApp()->WriteProfileString(_T("Recently"), _T("lastPath"), szPath);
 
-					/*int count = monitor_->Freeze();
+					int count = monitor_->Freeze();
 					Cash *cash = monitor_->GetCash(index);
 					if (cash->Valid(Cash::VALID_ADC))
 					{
-					if (LocalFileSaver::GetInstance()->SaveADCData(cash, folderName))
-					{
-					AfxMessageBox(IDS_PROMPT_SAVE_WAVE_SUCCESS, MB_ICONINFORMATION | MB_OK);
+						if (LocalFileSaver::GetInstance()->SaveADCData(cash, szPath /*folderName*/))
+						{
+							AfxMessageBox(IDS_PROMPT_SAVE_WAVE_SUCCESS, MB_ICONINFORMATION | MB_OK);
+						}
+						else
+						{
+							AfxMessageBox(IDS_PROMPT_SAVE_WAVE_FAILED, MB_ICONINFORMATION | MB_OK);
+						}
 					}
 					else
 					{
-					AfxMessageBox(IDS_PROMPT_SAVE_WAVE_FAILED, MB_ICONINFORMATION | MB_OK);
+						AfxMessageBox(IDS_PROMPT_INVALID_WAVE, MB_ICONWARNING | MB_OK);
 					}
-					}
-					else
-					{
-					AfxMessageBox(IDS_PROMPT_INVALID_WAVE, MB_ICONWARNING | MB_OK);
-					}
-					monitor_->Unfreeze();*/
+					monitor_->Unfreeze();
 				}
 			}
 
