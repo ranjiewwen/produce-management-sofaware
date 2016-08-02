@@ -25,7 +25,7 @@ bool TcpSocket::Connect(LPCTSTR address, int port, int milliseconds/* = 2000*/) 
 
   sockaddr_in addr;
   addr.sin_family = AF_INET;
-  addr.sin_addr.S_un.S_addr = inet_addr(CT2A(address));
+  addr.sin_addr.S_un.S_addr = inet_addr(/*CT2A(address)*/"172.16.100.174");
   addr.sin_port = htons(port);
   if (connect(socket_, (const sockaddr *)&addr, sizeof(addr)) != 0) {
     timeval tm;

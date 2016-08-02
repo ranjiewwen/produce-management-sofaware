@@ -27,6 +27,7 @@ PageFinish::~PageFinish() {
 void PageFinish::DoDataExchange(CDataExchange* pDX) {
 	Page::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_STATIC_AGDING_TIME, agingTimeLabel);
+	DDX_Control(pDX, IDC_STATIC_UNIT, agingTimeUnit);
 }
 
 
@@ -49,6 +50,13 @@ BOOL PageFinish::OnInitDialog() {
   ShowHeader(true);
 
   agingTimeLabel.SetBkColor(RGB(255, 255, 255));
+  agingTimeUnit.SetBkColor(RGB(255, 255, 255));
+
+  layout_.Init(m_hWnd);
+  layout_.AddDlgItem(IDC_STATIC_AGDING_TIME, AnchorLayout::CENTER, AnchorLayout::CENTER);
+  layout_.AddDlgItem(IDC_EDIT_AGDING_TIME, AnchorLayout::CENTER, AnchorLayout::CENTER);
+  layout_.AddDlgItem(IDC_STATIC_UNIT, AnchorLayout::CENTER, AnchorLayout::CENTER);
+
   SetDlgItemText(IDC_EDIT_AGDING_TIME,/*(LPCTSTR)1*/_T("1")); //默认值
 
   return TRUE;  // return TRUE unless you set the focus to a control
@@ -57,15 +65,23 @@ BOOL PageFinish::OnInitDialog() {
 
 void PageFinish::OnSize(UINT nType, int cx, int cy) {
   Page::OnSize(nType, cx, cy);
-
+  if (::IsWindow(m_hWnd)) {
+	  layout_.RecalcLayout();
+  }
   // TODO: Add your message handler code here
 }
 
 void PageFinish::OnBnClickedButtonOk() {
   CString agingTime;
-  GetDlgItemText(IDC_EDIT_AGDING_TIME,agingTime);
-  DeviceProxy::GetInstance()->SetAgingTestTime(_ttoi(agingTime)); //向下取整
-
+  GetDlgItemText(IDC_EDIT_AGDING_TIME, agingTime);
+  if (_ttoi(agingTime) < 0 || _ttoi(agingTime) > 24)
+  {
+	  MessageBox(_T("老化测试时间设置不正确！"));
+  }
+  else
+  {
+	  DeviceProxy::GetInstance()->SetAgingTestTime(_ttoi(agingTime)); //向下取整
+  }
   DebugLogger::GetInstance()->EndDebug();
   DeviceProxy::GetInstance()->DisableDebug();
 }
