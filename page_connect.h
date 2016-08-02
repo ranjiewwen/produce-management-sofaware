@@ -16,22 +16,22 @@ public:
 	PageConnect(CWnd* pParent = NULL);   // standard constructor
 	virtual ~PageConnect();
 
-// Dialog Data
+	// Dialog Data
 	enum { IDD = IDD_PAGE_CONNECT };
 
-  virtual void OnEnter(int leavePageId);
-  virtual bool OnLeave(int enterPageId);
+	virtual void OnEnter(int leavePageId);
+	virtual bool OnLeave(int enterPageId);
 
 protected:
-  Label                 labelTips_;
-  AnchorLayout          layout_;
-  Thread                connectThread_;
+	Label                 labelTips_;
+	AnchorLayout          layout_;
+	Thread                connectThread_;
 
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-  DWORD TryConnect();
+	DWORD TryConnect();
 
 	DECLARE_MESSAGE_MAP()
 public:
-  virtual BOOL OnInitDialog();
-  afx_msg void OnSize(UINT nType, int cx, int cy);
+	virtual BOOL OnInitDialog();
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };
