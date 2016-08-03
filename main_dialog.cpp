@@ -551,7 +551,7 @@ void MainDialog::EnableConnectionCheck(bool enabled) {
 void MainDialog::OnTimer(UINT_PTR nIDEvent) {
 	switch (nIDEvent)
 	{
-	case TIMER_CHECK_CONNECTION:
+	case TIMER_CHECK_CONNECTION: //几秒钟检查连接情况
 		DeviceProxy::GetInstance()->CheckConnection();
 		break;
 	case TIMER_DOWNLOAD_CONFIG:

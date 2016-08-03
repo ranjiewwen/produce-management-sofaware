@@ -820,15 +820,15 @@ DataConnection *DeviceProxy::OpenDataConnection(int commandId, const void *data,
 
   return connection.release();
 }
-
-bool DeviceProxy::SendCommand(int id) {
+//发送一个指令 Echo
+bool DeviceProxy::SendCommand(int id) {    
   return SendCommand(id, NULL, 0);
 }
-
+//发送带有负载的指令
 bool DeviceProxy::SendCommand(int id, const void *data, int dataLength) {
   return SendCommand(id, 0, data, dataLength);
 }
-
+//发送有计数，带负载的指令
 bool DeviceProxy::SendCommand(int id, int count, const void *data, int dataLength) {
   CommandResult result;
   if (!SendCommand(id, data, dataLength, &result)) {
@@ -840,11 +840,11 @@ bool DeviceProxy::SendCommand(int id, int count, const void *data, int dataLengt
   }
   return true;
 }
-
+//发送指令，并检验result
 bool DeviceProxy::SendCommand(int id, const void *data, int dataLength, CommandResult *result) {
   return SendCommand(id, 0, data, dataLength, result);
 }
-
+//发送指令，计数，检验result
 bool DeviceProxy::SendCommand(int id, int count, const void *data, int dataLength, CommandResult *result) {
   ASSERT(result != NULL);
 
@@ -853,7 +853,7 @@ bool DeviceProxy::SendCommand(int id, int count, const void *data, int dataLengt
   }
   return ReadResult(result);
 }
-
+//发送包头和数据
 bool DeviceProxy::SendCommandNoResult(int id, int count, const void *data, int dataLength) {
   PacketHeader hd;
   hd.signatures[0] = 'R';
