@@ -228,6 +228,8 @@ LRESULT PageUpgrade::OnUpgradeCompleted(WPARAM wParam, LPARAM lParam) {
     SetHeaderButtonText(IDC_BUTTON_START, IDS_BUTTON_RETRY);
   } else {
     //GotoStep(STEP_IR_CALIBRATION);
+	      // SetHeaderInfo(HEADER_STYLE_OK, IDS_IR_CALIBRATING_SUCCESSED, 0);
+	      // SetHeaderButtonText(IDC_BUTTON_STEP, IDS_BUTTON_CONTINUE);
   }
 
   EnableConnectionCheck(true);

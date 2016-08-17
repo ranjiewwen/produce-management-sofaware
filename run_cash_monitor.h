@@ -78,9 +78,9 @@ public:
 
 private:
   struct ADCChannel {
-    short count;
-    short *codes;
-    short *values;
+    short count;    //波形的长度
+    short *codes;   //黄线，码盘值
+    short *values;   //绿线，电压值
   };  
   int         valid_;
   int         id_;

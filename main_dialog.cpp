@@ -426,19 +426,37 @@ LRESULT MainDialog::OnDeviceConnected(WPARAM, LPARAM) {
   ParameterBlock firmwareBlock = modelBlock->SelectBlock(_T("Firmware"));
   CString firmwareVersion = firmwareBlock.GetStringParameter(_T("version"), NULL);
   if (firmwareVersion.CompareNoCase(CA2T(info.firmwareVersion)) == 0) {
-    if (info.debugState[0] & DEBUG_RUN_CASH_TEST_DONE) {
-      nextStep = STEP_FINISH;
-    }/* else if (info.debugState[0] & DEBUG_TAPE_STUDY_DONE) {
-      nextStep = STEP_RUN_CASH_TEST;
-    }*/ else if (info.debugState[0] & DEBUG_CIS_CALIBRATION_DONE) {
-      nextStep = STEP_RUN_CASH_TEST;
-    } else if (info.debugState[0] & DEBUG_MASTER_SIGNAL_DETECT_DONE) {
-      nextStep = STEP_CIS_CALIBRATION;
-    } else if (info.debugState[0] & DEBUG_IR_CALIBRATION_DONE) {
-      nextStep = STEP_MH_DETECT;
-    } else if (info.debugState[0] & DEBUG_UPGRADE_DONE) {
-      nextStep = STEP_IR_CALIBRATION;
-    }
+    //if (info.debugState[0] & DEBUG_RUN_CASH_TEST_DONE) {
+    //  nextStep = STEP_FINISH;
+    //}/* else if (info.debugState[0] & DEBUG_TAPE_STUDY_DONE) {
+    //  nextStep = STEP_RUN_CASH_TEST;
+    //}*/ else if (info.debugState[0] & DEBUG_CIS_CALIBRATION_DONE) {
+    //  nextStep = STEP_RUN_CASH_TEST;
+    //} else if (info.debugState[0] & DEBUG_MASTER_SIGNAL_DETECT_DONE) {
+    //  nextStep = STEP_CIS_CALIBRATION;
+    //} else if (info.debugState[0] & DEBUG_IR_CALIBRATION_DONE) {
+    //  nextStep = STEP_MH_DETECT;
+    //} else if (info.debugState[0] & DEBUG_UPGRADE_DONE) {
+    //  nextStep = STEP_IR_CALIBRATION;
+    //}
+
+	
+	  if (info.debugState[0] & DEBUG_IR_CALIBRATION_DONE) {
+		  nextStep = STEP_MH_DETECT;
+	  }
+	  else if (info.debugState[0] & DEBUG_UPGRADE_DONE) {
+		  nextStep = STEP_IR_CALIBRATION;
+	  }
+	  else if (info.debugState[0] & DEBUG_MASTER_SIGNAL_DETECT_DONE) {
+		  nextStep = STEP_CIS_CALIBRATION;
+	  }
+	  else if (info.debugState[0] & DEBUG_CIS_CALIBRATION_DONE) {
+		  nextStep = STEP_RUN_CASH_TEST;
+	  }
+	  else if (info.debugState[0] & DEBUG_RUN_CASH_TEST_DONE) {
+		  nextStep = STEP_FINISH;
+	  }
+	  
   }
 
   GotoStep(nextStep);

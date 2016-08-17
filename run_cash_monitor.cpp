@@ -122,19 +122,19 @@ DWORD RunCashMonitor::Run() {
       TRACE("Received a packet: %d\n", packet.GetType());
 
       switch (packet.GetType()) {
-        case ID_BEGIN_BUNDLE:
+        case ID_BEGIN_BUNDLE:  //3：走钞开始信号
           OnBeginBundle();
           break;
-        case ID_END_BUNDLE:
+        case ID_END_BUNDLE:  //4：提钞信号
           OnEndBundle();
           break;
-        case ID_ADC_DATA:
+        case ID_ADC_DATA:   //0: 主控数据
           OnADCData(&packet);
           break;
-        case ID_CIS_DATA:
+        case ID_CIS_DATA:  //1：图像数据
           OnCISData(&packet);
           break;
-        case ID_CASH_INFO:
+        case ID_CASH_INFO: //2：钞票信息数据
           OnCashInfo(&packet);
           break;
         default:
@@ -203,6 +203,7 @@ void RunCashMonitor::OnEndBundle() {
     e->Delete();
   }*/
   NotifyUpdate(SUBJECT_END_BUNDLE);
+ 
 }
 
 void RunCashMonitor::OnADCData(DataPacket *packet) {

@@ -207,7 +207,7 @@ void ImageViewDialog::OnRButtonDown(UINT nFlags, CPoint point) {
   CMenu *contextMenu = menu.GetSubMenu(0);
   int choice = contextMenu->TrackPopupMenu(TPM_RETURNCMD, point.x, point.y, this);
   if (choice == ID_SAVE_IMAGE) {
-    CFileDialog dlg(FALSE);
+    CFileDialog dlg(FALSE);  //文件保存对话框
     if (dlg.DoModal() == IDOK) {
       CString filePath = dlg.GetPathName();
       topImage_.SaveToFile(filePath + "_top.bmp");
