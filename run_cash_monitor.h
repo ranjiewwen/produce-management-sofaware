@@ -16,6 +16,7 @@ enum {
   ADC_CHANNEL_RSM,
   ADC_CHANNEL_LM,
   ADC_CHANNEL_RM,
+
   ADC_CHANNEL_EIR1,
   ADC_CHANNEL_EIR2,
   ADC_CHANNEL_EIR3,
@@ -23,16 +24,19 @@ enum {
   ADC_CHANNEL_EIR5,
   ADC_CHANNEL_EIR6,
   ADC_CHANNEL_EIR7,
+
   ADC_CHANNEL_IR1,
   ADC_CHANNEL_IR2,
   ADC_CHANNEL_IR3,
   ADC_CHANNEL_IR4,
   ADC_CHANNEL_IR5,
   ADC_CHANNEL_IR6,
+
   ADC_CHANNEL_UV,
   ADC_CHANNEL_UVL,
   ADC_CHANNEL_UVR,
   ADC_CHANNEL_HD,
+
   ADC_CHANNEL_COUNT
 };
 
@@ -91,9 +95,11 @@ private:
   int         error_;
   char        sn_[24];
   Bitmap      snImage_;
+
   void        *adcData_;
   int		  adcDataLength_;
   ADCChannel  adcChannels_[ADC_CHANNEL_COUNT];
+
   Bitmap      topImage_;
   Bitmap      bottomImage_;
 

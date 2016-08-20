@@ -148,35 +148,38 @@ bool LocalFileSaver::SaveADCData(Cash *data, LPCTSTR folder)
 		return false;
 	}
 
-	short count = data->GetADCSampleCount(0);
-	int dataLen = count * 8 * 20;
+	short count = data->GetADCSampleCount(0); //得到波形的长度
+	int dataLen = count * 8 * 20;  //循环采用8次，每次20个字节
 	char *writeData = new char[dataLen];
 	memset(writeData, 0, dataLen);
 	char *tmp = writeData;
 
 	const short *code = data->GetADCSampleCodes(ADC_CHANNEL_BM);
-	const short *value[ADC_CHANNEL_COUNT] = { 0 };
+	const short *value[ADC_CHANNEL_COUNT] = { 0 };  //指针数组，22行数据，每行数据长count
 
 	for (int i = 0; i < ADC_CHANNEL_COUNT; i++)
 	{
-		value[i] = data->GetADCSampleValues(i);
+		value[i] = data->GetADCSampleValues(i);   //22种磁信号的电压值
 	}
 
-	int channelMap[24] = { ADC_CHANNEL_BM, ADC_CHANNEL_IR1, ADC_CHANNEL_EIR5,
-		ADC_CHANNEL_RSM, ADC_CHANNEL_IR2, ADC_CHANNEL_EIR6,
-		ADC_CHANNEL_HD, ADC_CHANNEL_IR3, ADC_CHANNEL_UV,
-		ADC_CHANNEL_LSM, ADC_CHANNEL_IR4, ADC_CHANNEL_UVL,
-		ADC_CHANNEL_BM, ADC_CHANNEL_IR6, ADC_CHANNEL_EIR4,
-		ADC_CHANNEL_RM, ADC_CHANNEL_IR5, ADC_CHANNEL_EIR1,
-		ADC_CHANNEL_HD, ADC_CHANNEL_COUNT, ADC_CHANNEL_EIR3,
-		ADC_CHANNEL_LM, ADC_CHANNEL_COUNT, ADC_CHANNEL_EIR2 };
+	int channelMap[24] = { 
+		ADC_CHANNEL_BM, ADC_CHANNEL_IR1, ADC_CHANNEL_EIR5,   //0 12 9
+		ADC_CHANNEL_RSM, ADC_CHANNEL_IR2, ADC_CHANNEL_EIR6,  //2 13 10
+		ADC_CHANNEL_HD, ADC_CHANNEL_IR3, ADC_CHANNEL_UV,     //21 14 18
+		ADC_CHANNEL_LSM, ADC_CHANNEL_IR4, ADC_CHANNEL_UVL,   //1 15 19
 
-	for (int i = 0; i < count; i++)
+		ADC_CHANNEL_BM, ADC_CHANNEL_IR6, ADC_CHANNEL_EIR4,   //0  17 8
+		ADC_CHANNEL_RM, ADC_CHANNEL_IR5, ADC_CHANNEL_EIR1,   //4  16 5
+		ADC_CHANNEL_HD, ADC_CHANNEL_COUNT, ADC_CHANNEL_EIR3, //21  22 7
+		ADC_CHANNEL_LM, ADC_CHANNEL_COUNT, ADC_CHANNEL_EIR2  //3   22 6      //0 22 
+	}; 
+
+	for (int i = 0; i < count; i++)  //每个通道的数据长度
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 8; j++)   //每个点八次采样，每次20个字节 //对应选择通道
 		{
 			*(short *)tmp = *(value[channelMap[j * 3]] + i);
-			if (channelMap[j * 3 + 1] != ADC_CHANNEL_COUNT)
+			if (channelMap[j * 3 + 1] != ADC_CHANNEL_COUNT) //channelMap[22] j=7 or channelMap[19] j=6
 			{
 				*(short *)(tmp + 4) = *(value[channelMap[j * 3 + 1]] + i);
 			}
@@ -184,7 +187,7 @@ bool LocalFileSaver::SaveADCData(Cash *data, LPCTSTR folder)
 			*(short *)(tmp + 8) = *(value[channelMap[j * 3 + 2]] + i);
 			*(short *)(tmp + 10) = 4;
 			*(short *)(tmp + 12) = *(code + i);
-			*(char *)(tmp + 16) = j;
+			*(char *)(tmp + 16) = j;  //
 			tmp = tmp + 20;
 		}
 	}

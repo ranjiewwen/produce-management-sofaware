@@ -304,13 +304,39 @@ void Cash::SetADCData(void *data, int length) {
   for (int i = 0; i < ADC_CHANNEL_COUNT; i++) {
     adcChannels_[i].count = countPtr[i];
     adcChannels_[i].codes = dataPtr;
-    adcChannels_[i].values = dataPtr + countPtr[i];
+    adcChannels_[i].values = dataPtr + countPtr[i];   //countPtr[i]每个波形（adcChannels_）的长度
     dataPtr += 2 * countPtr[i];
     ASSERT(dataPtr <= endPtr);
   }
 
+ 
+   //CFile dataflie(_T("C:\\Users\\ranji\\Desktop\\adcChannels_.dat"), CFile::modeCreate | CFile::modeWrite | CFile::typeBinary);
+   //dataflie.Write(&adcChannels_[1], sizeof(adcChannels_));
+   //dataflie.Close();
+
   valid_ |= VALID_ADC;
 }
+
+//void Cash::SetADCData(void *data, int length) {
+//	TRACE("Cash::SetADCData\n");
+//
+//	adcDataLength_ = length;
+//	adcData_ = malloc(length);
+//	memcpy(adcData_, data, length);
+//	void *endPtr = (char *)adcData_ + length;
+//	char *countPtr = (char *)adcData_;
+//	char *dataPtr = countPtr + ADC_CHANNEL_COUNT;
+//	ASSERT(dataPtr <= endPtr);
+//	for (int i = 0; i < ADC_CHANNEL_COUNT; i++) {
+//		adcChannels_[i].count = countPtr[i];
+//		adcChannels_[i].codes = (short*)dataPtr;
+//		adcChannels_[i].values = (short*)(dataPtr + countPtr[i]);   //countPtr[i]每个波形（adcChannels_）的长度
+//		dataPtr += 2 * countPtr[i];
+//		ASSERT(dataPtr <= endPtr);
+//	}
+//
+//	valid_ |= VALID_ADC;
+//}
 
 class BitBuffer {
 public:
@@ -437,13 +463,13 @@ void Cash::SetCISData(void *data, int length) {
     return;
   }
   CISData *cisData = (CISData *)data;
-  unsigned char *src = (unsigned char *)(cisData + 1);
+  unsigned char *src = (unsigned char *)(cisData + 1); //10个字节
   topImage_.CreateGrayBitmap(cisData->width, cisData->height);
   bottomImage_.CreateGrayBitmap(cisData->width, cisData->height);
   if (!topImage_.IsValid() || !bottomImage_.IsValid()) {
     return;
   }
-  if (cisData->compression[0] != 'V' || cisData->compression[1] != 'R') {
+  if (cisData->compression[0] != 'V' || cisData->compression[1] != 'R') {  //不压缩的情况
 	  int imageSize = cisData->width * cisData->height;
 	  for (int i = 0; i < 2; i++)
 	  {
@@ -524,14 +550,14 @@ void Cash::SetCashInfo(void *data, int length) {
   TRACE("Cash::SetCashInfo\n");
 
   struct CashData{
-    int count;
-    int denomination;
-    int version;
-    int direction;
-    int error;
-    char sn[32];
-    int snImageSize;
-    unsigned int snImage[12][32];
+    int count;  //序号
+    int denomination;  //面额
+    int version;//版本
+    int direction; //方向
+    int error; //错误代码
+    char sn[32];  //冠字号
+    int snImageSize; //冠字号的图像 12*32
+    unsigned int snImage[12][32];  //0
   };
   if (length < sizeof(CashData)) {
     ASSERT(FALSE);
